@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        {% if title %}
+            <h1 class="title">{{ title }}</h1>
+        {% endif %}S
+
+        <form class="form-row" method="post" action=".">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.title }}
+                {{ form.slug }}
+                {{ form.image }}
+                <input type="date" value="{{ form.publish_date.value|date:'Y-m-d' }}" readonly>
+                <input type="text" value="{{ form.publish_date.value|date:'H:i' }}" disabled>
+                {{ form.content }}
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+    </div>
+   
+
+    
+{% endblock %}
+
+
+<!-- <form class="form-row" method="post" action=".">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+</form> -->
